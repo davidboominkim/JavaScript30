@@ -59,7 +59,8 @@
 
 <script>
   function removeTransition(e) {
-    if (e.propertyName !== 'transform') return;
+    console.log(e);
+    if (e.propertyName !== 'transform') return; // why is this required?
     e.target.classList.remove('playing');
   }
 
