@@ -21,6 +21,17 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+    :root {
+      --spacing: 10px;
+      --blur: 10px;
+      --base: #ffc600;
+    }
+
+    img {
+      background: var(--base);
+      padding: var(--spacing);
+      filter: blur(var(--blur));
+    }
 
     /*
       misc styles, nothing to do with CSS variables
@@ -42,9 +53,29 @@
     input {
       width: 100px;
     }
+
+    .hl {
+      color: var(--base);
+    }
   </style>
 
   <script>
+    const items = document.querySelectorAll('input');
+
+    items.forEach((item) => {
+      item.addEventListener('change', (e) => {
+        const suffix = e.target.dataset.sizing || '';
+        // console.log(suffix);
+        document.documentElement.style.setProperty(`--${e.target.name}`, e.target.value + suffix);
+        console.log(e.target.value + suffix);
+      });
+      item.addEventListener('mousemove', (e) => {
+        const suffix = e.target.dataset.sizing || '';
+        // console.log(suffix);
+        document.documentElement.style.setProperty(`--${e.target.name}`, e.target.value + suffix);
+        // console.log(e.target.style);
+      });
+    });
   </script>
 
 </body>
