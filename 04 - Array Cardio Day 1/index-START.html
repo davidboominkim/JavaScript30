@@ -80,19 +80,52 @@
     // console.log(sumYears);
 
     // 5. Sort the inventors by years lived
+    // 5 DONE
+    function compareYearsLived(a,b) {
+      const aYears = a.passed - a.year;
+      const bYears = b.passed - b.year;
+
+      return aYears - bYears;
+    }
+
+    inventors.sort(compareYearsLived);
+
+    // console.log(inventors);
+
+    // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
+    // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris\
 
     
 
-    // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
-    // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
-
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    // 7 DONE, sorted by first name for extra challenge
+
+    function compareFirstName (a, b) {
+      const aFirst = a.split(', ')[1];
+      const bFirst = b.split(', ')[1];
+      // console.log(aFirst);
+      // console.log(bFirst);
+      return aFirst.charCodeAt(0) - bFirst.charCodeAt(0);
+    }
+
+    people.sort(compareFirstName);
+
+    // console.log(people);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    let vehicles = data.reduce((obj, curr) => {
+      if (!(curr in obj)){
+        obj[curr] = 0;
+      }
+      obj[curr]++;
+      return obj;
+    }, {});
+
+    console.log(vehicles);
 
   </script>
 </body>
